@@ -1,0 +1,31 @@
+{
+  "name": "tan-ser-han-bot",
+  "version": "1.0.0",
+  "description": "A clone of Tan Ser Han",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoisKoh/tan-ser-han-bot.git"
+  },
+  "keywords": [
+    "bot",
+    "telegram",
+    "openai",
+    "chatgpt"
+  ],
+  "author": "Dois Koh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DoisKoh/tan-ser-han-bot/issues"
+  },
+  "homepage": "https://github.com/DoisKoh/tan-ser-han-bot#readme",
+  "dependencies": {
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
