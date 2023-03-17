@@ -2,7 +2,6 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-// import https from "https";
 import { Configuration, OpenAIApi } from "openai";
 
 const bot_token = process.env.BOT_API_TOKEN
@@ -61,12 +60,12 @@ export const handler = async (event) => {
     }
 
     // Respond to 50% of messages if no mentions are found
-    if (!sendMessage && Math.random() < 0.5) {
+    if (!sendMessage && Math.random() < 0.1) {
 
         // 4 different choices
-        const choice = Math.random() * 4;
+        const choice = Math.random() * 2;
 
-        if (choice < 1) { // 25%
+        if (choice < 1) { // 50%
             // 1st Choice - 33-33-33 rubbish
             const third = Math.random() * 3;
             if (third < 1) {
@@ -84,7 +83,7 @@ export const handler = async (event) => {
 
             }
 
-        } else if (choice < 2) { // 25%
+        } else if (choice < 2) { // 50%
             // 2nd choice - stupid stuff
             if (first_name === "Dois") {
                 message = `Hi ${body.message.from.first_name}, wow! You have a really big penis!`;
@@ -94,33 +93,6 @@ export const handler = async (event) => {
                 message = `Hi ${first_name}, look at my pretty ears!`;
             }
 
-        } else if (choice < 4) { // 50%
-
-            // 3rd Choice - Chat GPT
-            const bodyText = body.message.text;
-
-            if (!bodyText) {
-                bodyText = "Hello!";
-            }
-
-            const response = await openai.createChatCompletion({
-                model: "gpt-3.5-turbo",
-                messages: [
-                    {
-                        role: "system",
-                        content: `You are a Singaporean male named 'Tan Ser Han', you are long-winded and stupid. You are speaking to ${first_name}.`
-                    },
-                    {
-                        role: "user",
-                        content: body.message.text
-                    }
-                ],
-                n: 1,
-            });
-
-            console.log("persona", persona);
-            console.log("Chat GPT Response: ", response.data);
-            message = response.data.choices[0].message.content;
         }
 
         sendMessage = true;
